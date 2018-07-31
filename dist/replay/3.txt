@@ -1,0 +1,1 @@
+[4, 4]start;addmine(1,1);addmine(1,2);lefts(3,0){nf;lefts(1,0);lefts(1,3)|finish;lefts(0,0);lefts(0,1);lefts(0,2);lefts(0,3)}{ioe;rights(1,1);rights(1,2);lefts(0,1)|;double(0,1)|;show();double(0,2)|finish;show()}

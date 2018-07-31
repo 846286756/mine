@@ -1,0 +1,1 @@
+﻿[4,3]开始;addmine(1,3);addmine(2,0);lefts(0,0)|先尝试破空;left(2,2){若破空失败;show()|标一开三;rights(1,3);double(1,2)|局部完成;show()}{若破空成功则局部完成;addmine(1,3);addmine(0,3);show()}

@@ -1,0 +1,4 @@
+﻿[7, 6]再看一个实战中的局部，鼠标指针在第四排左数第三个且有向上走的趋势，插旗的部分是之前已经判断出的雷，周围的无关数字已略去：;addmine(0,1);rights(0,1);addmine(1,1);rights(1,1);addmine(2,1);rights(2,1);addmine(2,0);rights(2,0);addmine(5,0);rights(5,0);addmine(5,2);rights(5,2);addmine(1,2);addmine(1,5);addmine(3,5);addmine(2,3);addmine(5,6);lefts(0,0);lefts(1,0);lefts(0,2);lefts(0,3);lefts(0,4);lefts(0,5);lefts(0,6);lefts(1,6);lefts(2,6);lefts(3,6);lefts(4,6);lefts(3,0);lefts(3,1);lefts(3,2);lefts(4,2);lefts(4,1);lefts(4,0);lefts(5,1)|这时能看出这些雷;mark(1,2);mark(1,5);mark(3,5)|其中这个雷比较隐蔽，不过没关系，在接下来的点击过程中同时去判断，能反应过来的。;mark(2,3)|我们顺着鼠标走势继续点;show();left(2,2);left(1,3)|       到这里，在再往右点一格之时，就可以反应过来2的右下是安全的
+        因此按照邻近原则，这个局部应该是→↘←
+;show();left(1,4)|当点到右边夹在两颗雷中间的那个2时，就知道2的左下格是安全的;left(2,5);show();left(2,4)|于是继续↓←
+;show();left(3,4);left(3,3)|再从左到右点三个;show();left(4,3);left(4,4);left(4,5)|至此这个局部的解决就十分完美了，没有停顿，路线最短。 ;show()

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "multimine.py", line 424, in <module>
+  File "multimine.py", line 41, in __init__
+  File "map.pyc", line 123, in __init__
+  File "PIL\Image.pyc", line 1952, in open
+IOError: [Errno 2] No such file or directory: 'predatorskin.bmp'
+Traceback (most recent call last):
+  File "multimine.py", line 424, in <module>
+  File "multimine.py", line 41, in __init__
+  File "map.pyc", line 123, in __init__
+  File "PIL\Image.pyc", line 1952, in open
+IOError: [Errno 2] No such file or directory: 'predatorskin.bmp'
