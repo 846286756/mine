@@ -23,6 +23,7 @@ class minemap:
         self.leftinvalid=False
         self.rightinvalid=False
         self.rightminus=False
+        self.BigTDirection='s'
         self.lclick=0
         self.rclick=0
         self.dclick=0
@@ -55,6 +56,8 @@ class minemap:
         self.mapbuttonframe.pack(side=TOP)
         self.explainframe=Frame(self.root)
         self.explainframe.pack(side=TOP)
+        self.explaininputframe=Frame(self.root)
+        self.explaininputframe.pack(side=BOTTOM)
 
         
         self.explaintext = StringVar()
@@ -62,17 +65,17 @@ class minemap:
         textvariable = self.explaintext,wraplength = 140,justify = 'left')
         self.explaintext.set('')
         self.explain.pack(side=TOP)
-        self.text=Text(self.explainframe,width = 20,height = 5)
+        self.text=Text(self.explaininputframe,width = 20,height = 5)
         self.text.pack(side=TOP)
         self.branch = Listbox(self.branchframe)
         self.branch.pack(side=TOP)
         self.setoperate = Listbox(self.clickframe)
         for i in ['1：按下左键','2：点击左键','3：点击右键','4：按下双键',\
-                  '5：点击双键','6：设置地雷','7：显示标记']:
+                  '5：点击双键','6：设置地雷','7：显示标记','8：设置BigT']:
             self.setoperate.insert(END,i)
         self.setoperate.pack(side=TOP)
         self.setoperate.selection_set(0)
-        self.mouseoperate=['left','lefts','rights','double','doubles','addmine','mark']
+        self.mouseoperate=['left','lefts','rights','double','doubles','addmine','mark','addBigT']
         self.clickoperate=['lefts','double','rights']
         self.menu = Menu(self.root)
         self.file=Menu(self.menu)
@@ -109,7 +112,9 @@ class minemap:
         self.setmousebutton.bind('<Button>',self.setmouse)
         self.addshowbutton= Button(self.mapbuttonframe,text = 'show',\
                                 width = 6,height = 1,command=self.addshow)
-        self.setexplainbutton= Button(self.explainframe,text = '更改说明',\
+        self.fullminebutton= Button(self.mapbuttonframe,text = '填满地雷',\
+                                width = 6,height = 1,command=self.fullmine)
+        self.setexplainbutton= Button(self.explaininputframe,text = '更改说明',\
                                 width = 6,height = 1,command=self.setexplain)
         self.resetbutton.pack(side=LEFT)
         self.backbutton.pack(side=LEFT)
@@ -117,9 +122,10 @@ class minemap:
         self.addstepbutton.pack(side=LEFT)
         self.delstepbutton.pack(side=LEFT)
         self.addbranchbutton.pack(side=LEFT)
-        self.setexplainbutton.pack(side=TOP)
+        self.setexplainbutton.pack(side=BOTTOM)
         self.setmousebutton.pack(side=TOP)
-        self.addshowbutton.pack(side=TOP)
+        self.addshowbutton.pack(side=LEFT)
+        self.fullminebutton.pack(side=LEFT)
         skin=Image.open('predatorskin.bmp')
         self.photo = ImageTk.PhotoImage(skin)
         self.newmap([0,0])
@@ -191,6 +197,9 @@ class minemap:
                 self.pic[i][j].bind('<Button>',self.onclick)
                 self.window[i][j].grid(row = i,column = j)
             #self.showanswer()
+        self.explaintext.set('')
+        self.branch.delete(0,END)
+        
     def __repr__(self):
         p='mine:'+str(self.mine)
         p=p+'\n  '+repr(range(self.width)).replace(', ',' ')[1:-1]+' '
@@ -238,6 +247,7 @@ class minemap:
             for j in range(y-1,y+2):
                 if 0<=i<self.height and 0<=j<self.width:
                     self.openblock(i,j)
+
 
 
 
@@ -357,7 +367,7 @@ class minemap:
         self.prex=x
         self.prey=y
 
-                
+        
         
 
     def lefts(self,x,y):

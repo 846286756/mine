@@ -3,7 +3,7 @@
 from map import *
 import re
 
-debug=True
+debug=False
 class step:
     def __init__(self,string=''):
         t=string.split(';')
@@ -115,7 +115,9 @@ class multimine(minemap):
 
     def newfile(self):
         self.readstring(self.text.get(1.0,END)[:-1])
-        self.addstep()
+        self.p.steps[self.stepnum+1].text='开始'
+        self.readstep()
+        
         
         
     @read(idir='arbitertxt')
@@ -149,8 +151,8 @@ class multimine(minemap):
             w=int(string[string.index('Width: ')+7:string.index('Height: ')-1])
             h=int(string[string.index('Height: ')+8:string.index('Mines: ')-1])
             self.readstring('[{0},{1}]'.format(w,h))
-            self.addstep()
-            
+            self.p.steps[self.stepnum+1].text='布雷中……'
+            self.readstep()
             string=string[string.index('Board:\n')+7:]
             for i in range(h):
                 for j in range(w):
@@ -182,8 +184,7 @@ class multimine(minemap):
                 
                 if step[1] in ['lr','rr']:
                     self.addstep()
-            #self.delstep()
-            
+            self.delstep()
             return True
         return f        
 
@@ -191,8 +192,10 @@ class multimine(minemap):
     def fastkey(self,event):
         if event.keysym=='Right':
             self.play()
-        if event.keysym=='Left':
+        elif event.keysym=='Left':
             self.backstep()
+        elif event.keysym in ['w','s','a','d']:
+            self.BigTDirection=event.keysym
 
     '''
         if event.keysym.isdigit():
@@ -206,7 +209,34 @@ class multimine(minemap):
         x=event.widget['pady']
         y=event.widget['padx']
         c=event.num-1
-        self.addclick(self.clickoperate[c]+'({0},{1})'.format(x,y))
+        if self.clickoperate[c]=='addBigT':
+            self.addBigT(x,y)
+        else:
+            self.addclick(self.clickoperate[c]+'({0},{1})'.format(x,y))
+    def addBigT(self,x,y):
+        self.addclick('addmine({0},{1})'.format(x,y))
+        self.addclick('rights({0},{1})'.format(x,y))
+        if self.BigTDirection=='s':
+            self.addclick('left({0},{1})'.format(x+1,y))
+            self.addclick('double({0},{1})'.format(x+1,y))
+            self.addclick('double({0},{1})'.format(x,y-1))
+            self.addclick('double({0},{1})'.format(x,y+1))
+        elif self.BigTDirection=='w':
+            self.addclick('left({0},{1})'.format(x-1,y))
+            self.addclick('double({0},{1})'.format(x-1,y))
+            self.addclick('double({0},{1})'.format(x,y-1))
+            self.addclick('double({0},{1})'.format(x,y+1))
+        elif self.BigTDirection=='a':
+            self.addclick('left({0},{1})'.format(x,y-1))
+            self.addclick('double({0},{1})'.format(x,y-1))
+            self.addclick('double({0},{1})'.format(x-1,y))
+            self.addclick('double({0},{1})'.format(x+1,y))
+        elif self.BigTDirection=='d':
+            self.addclick('left({0},{1})'.format(x,y+1))
+            self.addclick('double({0},{1})'.format(x,y+1))
+            self.addclick('double({0},{1})'.format(x-1,y))
+            self.addclick('double({0},{1})'.format(x+1,y))
+
         
     def addclick(self,operate):
         if self.stepnum==-1:
@@ -218,6 +248,17 @@ class multimine(minemap):
         
     def addshow(self):
         self.addclick('show()')
+
+    def fullmine(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.map[i][j].mark!='□' and \
+                   self.map[i][j].show ==' ' and \
+                   self.map[i][j].answer!=9:
+                    self.addclick('addmine({0},{1})'.format(i,j))
+
+    
+
 
     def addstep(self):
         self.endclick()
@@ -317,11 +358,9 @@ class multimine(minemap):
         if self.clicknum==len(self.p.steps[self.stepnum].clicks):
             self.clicknum-=1
             return False
-        '''
-        if self.clicknum==0:
-            text=self.p.steps[self.stepnum].text
-            self.explaintext.set(text)
-        '''
+        #if self.clicknum==0:
+        #    text=self.p.steps[self.stepnum].text
+        #    self.explaintext.set(text)
         operate=self.p.steps[self.stepnum].clicks[self.clicknum]
         if debug:
             print operate
@@ -338,8 +377,6 @@ class multimine(minemap):
     def readstep(self):
         if self.nextstep():
             self.endclick()
-            text=self.p.steps[self.stepnum].text
-            self.explaintext.set(text)
             return True
         return False
     
@@ -350,6 +387,8 @@ class multimine(minemap):
             return False
         self.clicknum=-1
         self.back.append([])
+        text=self.p.steps[self.stepnum].text
+        self.explaintext.set(text)
         return True
 
     def endstep(self):#在当前node内走完step，若已指向最后1step的最后1click则返回失败

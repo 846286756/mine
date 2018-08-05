@@ -10,3 +10,124 @@ Traceback (most recent call last):
   File "map.pyc", line 123, in __init__
   File "PIL\Image.pyc", line 1952, in open
 IOError: [Errno 2] No such file or directory: 'predatorskin.bmp'
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 295, in play
+IndexError: tuple index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 195, in fastkey
+  File "multimine.py", line 252, in backstep
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 193, in fastkey
+  File "multimine.py", line 291, in play
+  File "multimine.py", line 340, in readstep
+  File "multimine.py", line 332, in endclick
+  File "multimine.py", line 317, in readclick
+IndexError: list index out of range
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "Tkinter.pyc", line 1537, in __call__
+  File "multimine.py", line 295, in play
+IndexError: tuple index out of range
